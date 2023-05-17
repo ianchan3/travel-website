@@ -12,7 +12,7 @@ export default function App () {
   
   const [places, setPlaces] = useState([]);
   const [coordinates, setCoordinates] = useState({});
-  const [bounds, setBounds] = useState(null);
+  const [bounds, setBounds] = useState({});
 
 
 useEffect(() => {
@@ -22,7 +22,7 @@ useEffect(() => {
 }, []);
 
 useEffect(() => {
-  getPlacesData(bounds?.sw, bounds?.ne)
+  getPlacesData(bounds.sw, bounds.ne)
   .then((data) => {
     console.log(data);
     setPlaces(data)
