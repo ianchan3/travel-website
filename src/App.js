@@ -21,30 +21,35 @@ export default function App () {
 
 
 useEffect(() => {
+  // Geolocation to retrieve user position
   navigator.geolocation.getCurrentPosition(({ coords: {latitude, longitude }}) => {
     setCoordinates({ lat: latitude, lng: longitude })
   })
 }, []);
 
 useEffect(() => {
-  const filteredPlaces = places?.filter((place) => place.rating > rating);
+  const filteredPlaces = places?.filter((place) => place?.rating > rating);
   setFilteredPlaces(filteredPlaces)
 }, [rating])
 
 useEffect(() => {
-  setIsLoading(true);
-  getPlacesData(type, bounds.sw, bounds.ne)
-  .then((data) => {
-    setPlaces(data);
-    setFilteredPlaces([]);
-    setIsLoading(false);
-  })
-}, [type, coordinates, bounds]);
+  if (bounds.sw && bounds.ne) {
+    setIsLoading(true);
+    getPlacesData(type, bounds.sw, bounds.ne)
+    .then((data) => {
+      setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
+      setFilteredPlaces([]);
+      setIsLoading(false);
+    })
+  }
+}, [type, bounds]);
+console.log(places)
+console.log(filteredPlaces)
 // type, coordinates, bounds
   return (
     <div>
       <CssBaseline />
-      <Header />
+      <Header setCoordinates={setCoordinates}/>
       <Grid container spacing={3} style={{ width: '100%' }}>
         <Grid item xs={12} md={4}>
           <List places={filteredPlaces?.length ? filteredPlaces : places} childClicked={childClicked} isLoading={isLoading} type={type} setType={setType} rating={rating} setRating={setRating} />
