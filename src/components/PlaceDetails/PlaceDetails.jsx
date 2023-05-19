@@ -10,7 +10,7 @@ export default function PlaceDetails ({ place, selected, refProp }) {
   const classes = useStyles();
 
 // Scroll to where the ref is currently positioned
-  if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start'})
+  if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth'})
   return (
     <Card elevation={6}>
       <CardMedia 

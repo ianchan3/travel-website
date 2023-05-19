@@ -40,8 +40,8 @@ export default function List ({ places, childClicked, isLoading, type, setType, 
         </FormControl>
         <Grid container spacing={3} className={classes.list}>
           {places?.map((place, i) => (
-            <Grid ref={elRefs[i]} item key={i} xs={12}>
-              <PlaceDetails place={place} selected={Number(childClicked) === i} refProp={elRefs[i]}/>
+            <Grid ref={elRefs[i]} key={i} xs={12}>
+              <PlaceDetails selected={Number(childClicked) === i} refProp={elRefs[i]} place={place}/>
             </Grid>
           ))}
         </Grid>
