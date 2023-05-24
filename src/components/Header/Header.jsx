@@ -4,7 +4,6 @@ import { AppBar, Toolbar, Typography, InputBase, Box } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import useStyles from './styles';
 
-
 export default function Header ({ coordinates, setCoordinates, weather, setWeather }) {
   const classes = useStyles();
   const [autocomplete, setAutoComplete] = useState(null);
@@ -32,10 +31,9 @@ export default function Header ({ coordinates, setCoordinates, weather, setWeath
     <AppBar position="static">
       <Toolbar className={classes.toolbar}>
         <Typography variant="h5" className={classes.title}>
-          Travel Website
+          Let's Travel
         </Typography> 
         <Typography variant="h5" className={classes.title}>
-          
         ⛅ {weather?.name} {`Weather`} {`Today: °`}{weather?.main?.temp}
         </Typography> 
         <Box display="flex">
