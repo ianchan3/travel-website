@@ -8,6 +8,8 @@ export default function Header ({ coordinates, setCoordinates, weather, setWeath
   const classes = useStyles();
   const [autocomplete, setAutoComplete] = useState(null);
 
+  let REACT_APP_OPENWEATHER_API_KEY2= "3db5c4a90aa425763a6b2d8a10469531"
+
   const onLoad = (autoC) => {
     setAutoComplete(autoC)
   }
@@ -19,7 +21,7 @@ export default function Header ({ coordinates, setCoordinates, weather, setWeath
   }
   
   useEffect(() => {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lng}&units=imperial&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${coordinates.lat}&lon=${coordinates.lng}&units=imperial&appid=${REACT_APP_OPENWEATHER_API_KEY2}`)
     .then(response => response.json())
     .then(result => {
       setWeather(result);

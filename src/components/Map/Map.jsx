@@ -10,10 +10,11 @@ export default function Map ({ setCoordinates, setBounds, coordinates, places, s
   const classes = useStyles();
   const isDesktop = useMediaQuery('(min-width:600px)')
   
+  let REACT_APP_GOOGLE_MAPS_API_KEY = "AIzaSyDnzoqPb4rabBjPDt5q3bQnKdo5UdD4IFg"
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY}}
+        bootstrapURLKeys={{ key: REACT_APP_GOOGLE_MAPS_API_KEY}}
         defaultCenter={coordinates}
         center={coordinates}
         defaultZoom={14}

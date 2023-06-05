@@ -24,8 +24,9 @@ export default function App () {
 
 useEffect(() => {
   // Geolocation to retrieve user position
-  navigator.geolocation.getCurrentPosition(({ coords: {latitude, longitude }}) => {
+  navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude }}) => {
     setCoordinates({ lat: latitude, lng: longitude });
+    console.log(coordinates)
   })
 }, []);
 
